@@ -211,3 +211,12 @@ See also [Forge's Unet Implementation](https://github.com/lllyasviel/stable-diff
 # Under Construction
 
 WebUI Forge is now under some constructions, and docs / UI / functionality may change with updates.
+
+## gfx803 support
+The base container can be found at `https://github.com/robertrosenbusch/gfx803_rocm`. Compile the image for yourself.
+```
+sudo chmod 777 /dev/kfd
+podman run -d --device=/dev/kfd --device=/dev/dri --group-add=video --ipc=host --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -p 8188:8188 -p 11300:7860 -v ./ComfyUI-dir:/comfy/ -v ./stable-diffusion-webui-forge-broken/:/stable-diffusion-forge --name rocm64_comfyui rocm64_gfx803_comfyui:latest /bin/bash
+```
+and follow the `sd-init.sh`
+
