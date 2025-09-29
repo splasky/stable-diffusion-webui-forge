@@ -14,6 +14,7 @@ tar zxf /opt/rocm-6.4.0.tgz -C /opt/
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements_versions.txt 
+touch requirements.txt # toch a empty requirements.txt file since we modify the customize requirements_versions.txt for gfx803
 # if the pip install the pytorch from pytorch website
 # pip uninstall torch
 # python3 /pytorch/setup.py install # install the pytorch for gfx803

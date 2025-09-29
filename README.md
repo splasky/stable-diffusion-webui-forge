@@ -218,5 +218,8 @@ The base container can be found at `https://github.com/robertrosenbusch/gfx803_r
 sudo chmod 777 /dev/kfd
 podman run -d --device=/dev/kfd --device=/dev/dri --group-add=video --ipc=host --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -p 8188:8188 -p 11300:7860 -v ./ComfyUI-dir:/comfy/ -v ./stable-diffusion-webui-forge-broken/:/stable-diffusion-forge --name rocm64_comfyui rocm64_gfx803_comfyui:latest /bin/bash
 ```
-and follow the `sd-init.sh`
+and follow the `sd-init.sh`. After building the new container, start with the following command.
+```
+podman run -d --device=/dev/kfd --device=/dev/dri --group-add=video --ipc=host --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -p 127.0.0.1:8188:8188 -p 127.0.0.1:11300:7860 -v ./ComfyUI-dir:/comfy/ -v ./stable-diffusion-webui-forge-broken/:/stable-diffusion-forge --name rocm64_comfyui_sd localhost/20250928-stable-diffusion-forge-rocm2.6:latest /stable-diffusion-forge/venv/bin/python3 /stable-diffusion-forge/launch.py --listen
+```
 
